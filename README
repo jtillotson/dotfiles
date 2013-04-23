@@ -1,2 +1,9 @@
-Putting my dotfiles in github.  Mainly as practice.
-Testing credential
+dotfiles
+This is a collection of my "dotfiles" for various tools I use.  
+
+23 April 2013:
+Tools included:
+    bash/
+    irssi/
+    mutt/
+    vim/
