@@ -1,0 +1,91 @@
+set query_command='lbdbq %s'
+set copy
+set beep_new
+set ascii_chars=yes
+set reverse_name
+set move=no
+unset mark_old
+set forward_quote
+set include
+set fast_reply='yes'
+set indent_str='> '
+set header_cache='~/.muttheaders/'
+set sort=threads
+ignore *    # this means "ignore all headers by default"
+unignore  date from subject to cc
+
+# source .muttrc.local
+source ~/.mutt/colors
+set mailcap_path = '~/.mutt/mailcap'
+
+set alias_file = '~/.mutt/aliases'
+source ~/.mutt/aliases
+source ~/.mutt/mailboxes
+# Folder hooks and other hook settings
+source ~/.mutt/hooks
+set editor="vim -c 'set nohlsearch noshowmatch modelines=0 tw=75 et noai spell'"
+set envelope_from
+set edit_headers
+set fast_reply
+
+set pager_index_lines=7
+macro index     h "c?\t"
+macro compose a "<pgp-menu>s<attach-file>"
+# macro pager \cb \
+# <enter-command>'set pipe_decode'<enter>\
+# <pipe-entry>'w3m'<enter>\
+# <enter-command>'unset pipe_decode'<enter> \
+# 'Follow links in w3m' 
+# auto_view text/html application/msword
+set print_command="a2ps -g -Email -d -1 -M letter -R"
+set query_command="abook --mutt-query '%s'"
+macro index \ca !abook\n
+macro pager A |'abook --add-email'\n
+
+set imap_user = 'jeffx@jeffx.com'
+set imap_pass = ''
+
+set smtp_url = 'smtp://jeffx@jeffx.com@smtp.gmail.com:587/'
+
+set smtp_pass = ''
+set from = 'jeffx@jeffx.com'
+set realname = 'Jeffery Tillotson'
+
+set folder = 'imaps://imap.gmail.com:993'
+set spoolfile = '+INBOX'
+set postponed='+[Gmail]/Drafts'
+
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+
+set move = no
+set timeout=15
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+set certificate_file=~/.mutt/certificates
+set signature = "~/.mutt/signature"
+my_hdr X-PGP-Key: http://www.jeffx.com/gpg.html
+
+
+
+set pgp_replysignencrypted 
+set pgp_show_unusable=no   
+
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 412D53B3 -- -r %r -- %f"
+set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 412D53B3 -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import -v %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set pgp_autosign=yes
+set pgp_sign_as="412D53B3"
+set pgp_replyencrypt=yes
+set pgp_timeout=1800
+set pgp_good_sign="^gpg: Good signature from"

@@ -1,0 +1,4 @@
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
+# text/html;                      /usr/bin/links %s; nametemplate=%s.html
+#text/html;                      /usr/bin/links -dump %s; nametemplate=%s.html; copiousoutput

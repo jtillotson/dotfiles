@@ -1,0 +1,27 @@
+# The first options set defaults
+unset sig_on_top
+# default hook is 'set index_format="%4C %Z %{%b %d} 
+# %-15.15L (%4l) %s"'
+# folder-hook . 'set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"'
+# folder-hook . 'set sort=date'
+# folder-hook . 'my_hdr From: Kyle Rankin <foo@example.com>'
+# send-hook . unset signature
+
+# Set special options when I'm in my nblug folder
+# folder-hook nblug 'set index_format="%4C %Z %{%b %d} %-15.15F (%4l) %s"'
+# folder-hook . 'set sort=date'
+# folder-hook nblug 'set sort=threads'
+# folder-hook nblug 'set signature="~/.mutt/.sig.nblug"
+
+#default folder_format="%2C %t %N %F %sl %-8.8u %-8.8g %8s %d %f"
+set folder_format="%2C %t %N %8s bytes - %d %f"
+
+# these settings will pick a different signature file to use 
+# depending on whether I'm sending email to nblug.org (one of my 
+# mailing lists) or one of my consulting clients
+# send-hook '~t @nblug\.org$' 'set signature="~/.mutt/.sig.nblug"; my_hdr From: My Name <foo@example.com>'
+# send-hook '~t client@example\.com$' set signature="~/.mutt/.sig.consulting"; my_hdr From: My Name <bar@example.com>'
+
+# This is the actual hook I use to make sure emails to my 
+# Linux Journal address have the proper FROM headers
+# reply-hook '~t lj@greenfly\.net' 'my_hdr From: Kyle Rankin <lj@greenfly.net>'
