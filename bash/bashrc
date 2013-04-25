@@ -5,6 +5,23 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Reset Colors
+Color_Off='\e[0m'       # Text Reset
+
+# Regular Colors
+Black='\e[0;30m'        # Black
+Red='\e[0;31m'          # Red
+Green='\e[0;32m'        # Green
+Yellow='\e[0;33m'       # Yellow
+Blue='\e[0;34m'         # Blue
+Purple='\e[0;35m'       # Purple
+Cyan='\e[0;36m'         # Cyan
+White='\e[0;37m'        # White
+
 . /etc/bash_completion.d/git
 
-# User specific aliases and functions
+# export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
+# export PS1="${Purple}[${Green}\u${Purple}@${Green}\h : ${Yellow}\w${Purple}]\n\$>${Color_Off}"
+# export PS1="\n\[\[\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+export PS1="\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+
