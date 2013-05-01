@@ -1,0 +1,10 @@
+vbell on
+startup_message off
+hardstatus alwayslastline
+hardstatus string '%{= kg}[%{G}%H%{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n-%t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{g}[%{B}%d-%M-%Y %{G}%c%{g}]'
+defmonitor on
+activity "you are about to be eaten by a grue in %t(%n)"
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+altscreen on
+shelltitle '$ |bash'
+
