@@ -1,0 +1,7 @@
+function push-key {
+   if [ -f ~/.ssh/id_rsa.pub ] ; then
+       ssh $1 "echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
+   else
+       echo "No ssh pubkey"
+   fi
+}

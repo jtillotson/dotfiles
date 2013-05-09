@@ -18,10 +18,24 @@ Purple='\e[0;35m'       # Purple
 Cyan='\e[0;36m'         # Cyan
 White='\e[0;37m'        # White
 
+if [ ! -d ${HOME}/Projects/dotfiles ] ; then
+    printf "${Red}%-17s${Color_Off}\n" "-----NOTICE!-----"
+    printf "You do not have your dotfiles checked out from github.\n"
+    printf "Consider doing that.\n"
+fi
 . /etc/bash_completion.d/git
+if [ -f ${HOME}/Projects/dotfiles/bash/functions ] ; then
+    . ${HOME}/Projects/dotfiles/bash/functions
+fi 
 
-# export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
+if [ ${HOSTNAME} == "blob" ] ; then
+    export http_proxy=http://www-proxy.ericsson.se:8080
+fi
+
+export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
+export TERM="screen-256color"
+export PATH=${PATH}:${HOME}/bin
 # export PS1="${Purple}[${Green}\u${Purple}@${Green}\h : ${Yellow}\w${Purple}]\n\$>${Color_Off}"
 # export PS1="\n\[\[\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
-export PS1="\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+#export PS1="\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
 
