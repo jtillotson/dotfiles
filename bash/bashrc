@@ -23,7 +23,12 @@ if [ ! -d ${HOME}/Projects/dotfiles ] ; then
     printf "You do not have your dotfiles checked out from github.\n"
     printf "Consider doing that.\n"
 fi
-. /etc/bash_completion.d/git
+if [ -f /etc/bash_completion.d/git ] ; then
+    . /etc/bash_completion.d/git
+fi
+if [ -f /etc/bash_completion ] ; then
+    . /etc/bash_completion 
+fi
 if [ -f ${HOME}/Projects/dotfiles/bash/functions ] ; then
     . ${HOME}/Projects/dotfiles/bash/functions
 fi 
@@ -32,10 +37,49 @@ if [ ${HOSTNAME} == "blob" ] ; then
     export http_proxy=http://www-proxy.ericsson.se:8080
 fi
 
-export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
-export TERM="screen-256color"
-export PATH=${PATH}:${HOME}/bin
-# export PS1="${Purple}[${Green}\u${Purple}@${Green}\h : ${Yellow}\w${Purple}]\n\$>${Color_Off}"
-# export PS1="\n\[\[\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
-#export PS1="\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+force_color_prompt=yes
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt="yes"
+        export TERM="screen-256color"
+    else
+	color_prompt=
+    fi
+fi
+if [ ${color_prompt} = "yes" ] ; then
+    export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
+    # export PS1="${Purple}[${Green}\u${Purple}@${Green}\h : ${Yellow}\w${Purple}]\n\$>${Color_Off}"
+    # export PS1="\n\[\[\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+    # export PS1="\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+else
+    export PS1="[\u@\h]"
+fi
+unset color_prompt
+if [ -x /usr/bin/dircolors ] ; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+if [ -e ${HOME}/java ] ; then
+    export JAVA_HOME=${HOME}/java
+    export PATH=${PATH}:${HOME}/bin:${JAVA_HOME}/bin
+else
+    export PATH=${PATH}:${HOME}/bin
+fi
+export HISTTIMEFORMAT="%A %h %d - %r"
+# export HISTTIMEFORMAT="%F %T "
+# export HISTTIMEFORMAT="%T %R"
+export HISTCONTROL=ignoreboth
+export HISTSIZE=2000
 
