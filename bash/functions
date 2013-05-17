@@ -5,3 +5,6 @@ function push-key {
        echo "No ssh pubkey"
    fi
 }
+function clear-host {
+    ssh-keygen -R $1
+}

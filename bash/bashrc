@@ -77,8 +77,8 @@ if [ -e ${HOME}/java ] ; then
 else
     export PATH=${PATH}:${HOME}/bin
 fi
-export HISTTIMEFORMAT="%A %h %d - %r"
-# export HISTTIMEFORMAT="%F %T "
+export HISTTIMEFORMAT="%F %T "
+#export HISTTIMEFORMAT="%A %h %d - %r"
 # export HISTTIMEFORMAT="%T %R"
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
