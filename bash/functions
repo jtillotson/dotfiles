@@ -1,10 +1,17 @@
 function push-key {
    if [ -f ~/.ssh/id_rsa.pub ] ; then
-       ssh $1 "echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
+       ssh $1 "if [ ! -d ~/.ssh ] ; then mkdir ~/.ssh ; chmod 700 ~/.ssh ; fi ; echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
    else
        echo "No ssh pubkey"
    fi
 }
 function clear-host {
     ssh-keygen -R $1
+}
+function whatip {
+    if [ -f /etc/hosts ] ; then
+        grep -v "^#" /etc/hosts |grep $1 || echo "entry $1 not found"
+    else
+        echo "No /etc/hosts file"
+    fi
 }
