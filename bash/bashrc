@@ -36,6 +36,10 @@ fi
 if [ ${HOSTNAME} == "blob" ] ; then
     export http_proxy=http://www-proxy.ericsson.se:8080
 fi
+if [ ${HOSTNAME} == "double" ] ; then
+    export http_proxy=http://www-proxy.ericsson.se:8080
+fi
+
 
 force_color_prompt=yes
 if [ -n "$force_color_prompt" ]; then

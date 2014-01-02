@@ -1,6 +1,6 @@
 function push-key {
    if [ -f ~/.ssh/id_rsa.pub ] ; then
-       ssh $1 "if [ ! -d ~/.ssh ] ; then mkdir ~/.ssh ; chmod 700 ~/.ssh ; fi ; echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys"
+       ssh $1 "if [ ! -d ~/.ssh ] ; then mkdir ~/.ssh ; chmod 700 ~/.ssh ; fi ; echo '`cat ~/.ssh/id_rsa.pub`' >> ~/.ssh/authorized_keys ; chmod 600 ~/.ssh/authorized_keys"
    else
        echo "No ssh pubkey"
    fi
@@ -15,3 +15,4 @@ function whatip {
         echo "No /etc/hosts file"
     fi
 }
+# for host in $(dig -tAXFR int.mdms.local | awk '{ if($4 == "A") {print $1} }' | sed -e 's/\.int\.mdms\.local\.//g'); do ssh root@${host} hostname ; done

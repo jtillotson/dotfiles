@@ -1,3 +1,6 @@
+call pathogen#incubate()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 syntax on
 set tw=79
 set wm=2
@@ -10,5 +13,6 @@ set autoindent
 set hlsearch
 set incsearch
 set ruler
-set number
+"set number
 set background=dark
+
