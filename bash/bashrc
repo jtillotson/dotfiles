@@ -53,6 +53,8 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+unset PS1
+unset PROMPT_COMMAND
 if [ ${color_prompt} = "yes" ] ; then
     export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
     # export PS1="${Purple}[${Green}\u${Purple}@${Green}\h : ${Yellow}\w${Purple}]\n\$>${Color_Off}"

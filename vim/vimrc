@@ -1,9 +1,9 @@
-call pathogen#incubate()
+"call pathogen#incubate()
 "call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#helptags()
 syntax on
 filetype indent plugin on
-"set tw=80
+set tw=80
 set wm=2
 set tabstop=4 
 set softtabstop=4
