@@ -86,4 +86,5 @@ export HISTTIMEFORMAT="%F %T "
 # export HISTTIMEFORMAT="%T %R"
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
+unset SSH_ASKPASS
 
