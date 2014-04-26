@@ -73,7 +73,7 @@ alias la='ls -A'
 alias l='ls -CF'
 if [ -e ${HOME}/java ] ; then
     export JAVA_HOME=${HOME}/java
-    export PATH=${PATH}:${HOME}/bin:${JAVA_HOME}/bin
+    export PATH=${JAVA_HOME}/bin:${PATH}:${HOME}/bin
 else
     export PATH=${PATH}:${HOME}/bin
 fi
