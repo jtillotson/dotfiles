@@ -7,18 +7,6 @@ fi
 if [ -f ~/Projects/dotfiles/bash/colors ] ; then
     . ~/Projects/dotfiles/bash/colors 
 fi
-# Reset Colors
-Color_Off='\e[0m'       # Text Reset
-
-# Regular Colors
-Black='\e[0;30m'        # Black
-Red='\e[0;31m'          # Red
-Green='\e[0;32m'        # Green
-Yellow='\e[0;33m'       # Yellow
-Blue='\e[0;34m'         # Blue
-Purple='\e[0;35m'       # Purple
-Cyan='\e[0;36m'         # Cyan
-White='\e[0;37m'        # White
 
 if [ ! -d ${HOME}/Projects/dotfiles ] ; then
     printf "${Red}%-17s${Color_Off}\n" "-----NOTICE!-----"
@@ -34,6 +22,9 @@ fi
 if [ -f ${HOME}/Projects/dotfiles/bash/functions ] ; then
     . ${HOME}/Projects/dotfiles/bash/functions
 fi 
+
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 if [ ${HOSTNAME} == "blob" ] ; then
     export http_proxy=http://www-proxy.ericsson.se:8080
