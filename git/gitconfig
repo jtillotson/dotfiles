@@ -1,0 +1,12 @@
+[http]
+	proxy = http://www-proxy.ericsson.se:8080
+	sslcainfo = /etc/ssl/certs/ca-bundle.crt
+[https]
+	proxy = http://www-proxy.ericsson.se:8080
+[user]
+	email = jeff.tillotson@ericsson.com
+	name = Jeff Tillotson
+[color]
+	ui = true
+[core]
+	excludesfile = /home/ejeftil/.gitignore_global
