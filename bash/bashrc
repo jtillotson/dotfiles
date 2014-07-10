@@ -87,5 +87,5 @@ export HISTTIMEFORMAT="%F %T "
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
 unset SSH_ASKPASS
-export WORKON_HOME="${HOME}/Envs"
+export WORKON_HOME="${HOME}/PythonEnvs"
 . /usr/bin/virtualenvwrapper.sh
