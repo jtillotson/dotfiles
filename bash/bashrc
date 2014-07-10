@@ -4,7 +4,9 @@
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
-
+if [ -f ~/Projects/dotfiles/bash/colors ] ; then
+    . ~/Projects/dotfiles/bash/colors 
+fi
 # Reset Colors
 Color_Off='\e[0m'       # Text Reset
 
@@ -55,11 +57,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 unset PS1
 unset PROMPT_COMMAND
+. ~/bin/git-prompt.sh
 if [ ${color_prompt} = "yes" ] ; then
-    export PS1="[${Green}\u@\h \e[30;1m\w\e[0m]\n\$>"
-    # export PS1="${Purple}[${Green}\u${Purple}@${Green}\h : ${Yellow}\w${Purple}]\n\$>${Color_Off}"
-    # export PS1="\n\[\[\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
-    # export PS1="\e[0m\]\[\e[35m\]Command [\[\e[33;1m\]TL=\T\[\[\e[0m\]\[\e[35m\]]:[\[\e[36;1m\]\!\[\e[0m\]\[\e[35m\]] (\[\e[33;1m\]\w\[\e[0m\]\[\e[35m\])? : \[\e[37;1m\]"
+    export PS1="[${Green}\u@\h][${BIGreen}\w]${Red}\$(__git_ps1)${Color_Off}\$>"
 else
     export PS1="[\u@\h]"
 fi
