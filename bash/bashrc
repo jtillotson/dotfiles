@@ -84,11 +84,8 @@ else
     export PATH=${PATH}:${HOME}/bin
 fi
 export HISTTIMEFORMAT="%F %T "
-#export HISTTIMEFORMAT="%A %h %d - %r"
-# export HISTTIMEFORMAT="%T %R"
 export HISTCONTROL=ignoreboth
 export HISTSIZE=2000
 unset SSH_ASKPASS
-export WORKON_HOME=~/PythonEnvs
-source /usr/bin/virtualenvwrapper.sh
-
+export WORKON_HOME="${HOME}/Envs"
+. /usr/bin/virtualenvwrapper.sh
