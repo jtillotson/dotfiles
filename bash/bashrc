@@ -50,7 +50,7 @@ unset PS1
 unset PROMPT_COMMAND
 . ~/bin/git-prompt.sh
 if [ ${color_prompt} = "yes" ] ; then
-    export PS1="${BIPurple}[ -- \w -- ]${Color_Off} | ${BIRed}[ git: \$(__git_ps1) ]${Color_Off}\n[${Green}\u@\h]\$>${Color_Off}"
+    export PS1="\u@\h \W${BRed}\$(__git_ps1)${Color_Off}> "
 else
     export PS1="[\u@\h]"
 fi
